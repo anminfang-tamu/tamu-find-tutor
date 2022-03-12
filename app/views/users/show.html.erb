@@ -1,6 +1,7 @@
 <h1>User Profile</h1>
-<p><strong>First Name: <%= @user.username %></strong></p>
-<p><strong>Last Name: <%= @user.created_at %></strong></p>
+<p><strong>User Name: <%= @user.username %></strong></p>
+<p><strong>Email: <%= @user.email %></strong></p>
+<p><strong>Created At: <%= @user.created_at %></strong></p>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
