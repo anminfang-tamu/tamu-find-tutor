@@ -1,0 +1,12 @@
+<%= form_tag user_path(@user), :method => :put, :class => 'form' do %>
+    <div class="form-group">
+        
+      
+        <%= label :user, :username, 'User Name', :class => 'col-form-label' %>
+        <%= text_field :user, :username, :class => 'form-control' %>
+        
+      <br/>
+      <%= submit_tag 'Edit', :class => 'btn btn-success' %>
+      <%= link_to 'Cancel', users_path, :class => 'btn btn-danger' %>
+    </div>
+<% end %>

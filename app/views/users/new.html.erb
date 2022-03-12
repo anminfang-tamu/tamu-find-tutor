@@ -1,0 +1,28 @@
+<h1>Signup</h1>
+
+<% if @user.errors.any? %>
+    <h2>The following errors prevented profile from being created</h2>
+    <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_tag users_path, :class => 'form' do %>
+    <div class="form-group">
+        
+      
+        <%= label :user, :username, 'User Name', :class => 'col-form-label' %>
+        <%= text_field :user, :username, :class => 'form-control' %>
+        
+        <%= label :user, :password, 'Password', :class => 'col-form-label' %>
+        <%= text_field :user, :password, :class => 'form-control' %>
+      
+        
+      <br/>
+      <%= submit_tag 'Submit', :class => 'btn btn-success' %>
+      <%= link_to 'Cancel', users_path, :class => 'btn btn-danger' %>
+    </div>
+  
+<% end %>
