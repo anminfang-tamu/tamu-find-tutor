@@ -32,13 +32,6 @@ group :development, :test do
   
   gem 'rspec-rails', '4.0.0.beta4'
   
-  # gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
-  # gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
-  # gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
-  # gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
-  # gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
-  # gem 'rails-controller-testing'
-  
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
