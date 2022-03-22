@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @post.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Tutor Area: <%= @post.tutor_area %></h6>
+    <h6 class="card-subtitle mb-2 text-muted">Schedule: <%= @post.schedule %></h6>
+    <p class="card-text">Description: <%= @post.description %></p>
+    <h6 class="card-subtitle mb-2 text-muted">Price: <%= @post.price %></h6>
+    <a href="#" class="card-link"><%= link_to 'Edit', edit_post_path(@post) %></a>
+    <a href="#" class="card-link"><%= link_to 'Back', posts_path %></a>
+  </div>
+</div>
