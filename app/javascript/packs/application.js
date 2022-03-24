@@ -17,18 +17,18 @@
 
 // console.log('Hello World from Webpacker')
 
+// Import the specific modules you may need (Modal, Alert, etc)
+import { Tooltip, Popover } from "bootstrap"
 import 'bootstrap';
 import '../stylesheets/application'
 
-// require("@rails/ujs").start()
-// require("turbolinks").start()
-// require("@rails/activestorage").start()
-// require("channels")
-
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+require("jquery")
+require("jquery-ui")
 require("@popperjs/core")
-
-// Import the specific modules you may need (Modal, Alert, etc)
-import { Tooltip, Popover } from "bootstrap"
 
 // The stylesheet location we created earlier
 require("../stylesheets/application.scss")

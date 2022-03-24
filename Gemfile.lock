@@ -58,7 +58,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    bcrypt (3.1.16)
+    bcrypt (3.1.17)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -72,7 +72,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     cucumber (7.1.0)
       builder (~> 3.2, >= 3.2.4)
@@ -139,7 +139,7 @@ GEM
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.14.0)
+    loofah (2.15.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -242,6 +242,9 @@ GEM
       ffi (~> 1.1)
     thor (1.2.1)
     thread_safe (0.3.6)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     warden (1.2.9)
@@ -279,6 +282,7 @@ DEPENDENCIES
   safe_attributes
   spring
   spring-watcher-listen (~> 2.0.0)
+  turbolinks
   tzinfo-data
   webpacker (~> 5.0)
 
