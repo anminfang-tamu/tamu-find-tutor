@@ -8,6 +8,7 @@
     <p class="card-text">Description: <%= @post.description %></p>
     <h6 class="card-subtitle mb-2 text-muted">Price: <%= @post.price %></h6>
     <a href="#" class="card-link"><%= link_to 'Edit', edit_post_path(@post) %></a>
+    <a href="#" class="card-link"><%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %></a>
     <a href="#" class="card-link"><%= link_to 'Back', posts_path %></a>
   </div>
 </div>
