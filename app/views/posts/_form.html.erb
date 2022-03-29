@@ -1,0 +1,35 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+    <%= label :post, :title, 'Title', :class => 'col-form-label' %>
+    <%= text_field :post, :title, :class => 'form-control' %>
+    
+    <%= label :post, :tutor_area, 'Tutor Area', :class => 'col-form-label' %>
+    <%= text_field :post, :tutor_area, :class => 'form-control' %>
+    
+    <%= label :post, :schedule, 'Schedule', :class => 'col-form-label' %>
+    <%= text_field :post, :schedule, :class => 'form-control' %>
+    
+    <%= label :post, :description, 'Description', :class => 'col-form-label' %>
+    <%= text_area :post, :description, :class => 'form-control' %>
+    
+    <%= label :post, :price, 'Price', :class => 'col-form-label' %>
+    <%= text_field :post, :price, :class => 'form-control' %>
+  </div>
+
+  
+  <%= form.submit :class => 'btn btn-success' %>
+  <%= link_to 'Cancel', posts_path, :class => 'btn btn-danger' %>
+  
+<% end %>
