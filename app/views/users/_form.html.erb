@@ -7,8 +7,8 @@
         <%= label :user, :username, 'Email', :class => 'col-form-label' %>
         <%= text_field :user, :user_email, :class => 'form-control' %>
         
-        <%= label :user, :password, 'Password', :class => 'col-form-label' %>
-        <%= text_field :user, :password, :class => 'form-control' %>
+        <%= label :user, :password_digest, 'Password', :class => 'col-form-label' %>
+        <%= text_field :user, :password_digest, :class => 'form-control' %>
         
       <br/>
       <%= submit_tag 'Edit', :class => 'btn btn-success' %>
