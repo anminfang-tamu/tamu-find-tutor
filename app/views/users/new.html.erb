@@ -10,17 +10,18 @@
 <% end %>
 
 <%= form_tag users_path, :class => 'form' do %>
-    <div class="form-group">
-      
+    <div class="form-group row">
         <%= label :user, :username, 'User Name', :class => 'col-form-label' %>
         <%= text_field :user, :username, :class => 'form-control' %>
-        
+    </div>
+    <div class="form-group row">
         <%= label :user, :user_email, 'Email', :class => 'col-form-label' %>
         <%= text_field :user, :user_email, :class => 'form-control' %>
-        
+    </div>
+    <div class="form-group row">
         <%= label :user, :password_digest, 'Password', :class => 'col-form-label' %>
         <%= text_field :user, :password_digest, :class => 'form-control' %>
-        
+    </div>
       <br/>
       <%= submit_tag 'Submit', :class => 'btn btn-success' %>
       <%= link_to 'Cancel', users_path, :class => 'btn btn-danger' %>
