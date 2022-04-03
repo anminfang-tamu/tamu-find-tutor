@@ -1,7 +1,10 @@
-<h1>User Profile</h1>
-<p><strong>User Name: <%= @user.username %></strong></p>
-<p><strong>Created At: <%= @user.created_at %></strong></p>
+<h1 class="text-center mt-4"><%= @user.username %>'s Profile</h1>
 
+<%= gravatar_for @user, size: 200 %>
+
+<h3 class="text-center mt-4">Posts</h3>
+
+<%= render 'posts/post' %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Return', users_path %>
