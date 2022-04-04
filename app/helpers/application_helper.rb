@@ -2,6 +2,9 @@ module ApplicationHelper
     
     
     def gravatar_for(user, options = {size: 80})
+        if user.user_email == nil
+            return
+        end
         email_address = user.user_email.downcase
         hash = Digest::MD5.hexdigest(email_address)
         size = options[:size]
