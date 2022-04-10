@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+            session[:user_id] = @user.id
             flash[:notice] = "Profile was created successfully."
             redirect_to @user
         else
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
     end
     
     def user_params
-        params.require(:user).permit(:username, :user_email, :password_digest)
+        params.require(:user).permit(:username, :fullname, :user_email, :password)
     end
     
 end

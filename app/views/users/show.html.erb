@@ -1,4 +1,4 @@
-<h1 class="text-center mt-4"><%= @user.username %>'s Profile</h1>
+<h1 class="text-center mt-4"><%= @user.fullname %>'s Profile</h1>
 
 <%= gravatar_for @user, size: 200 %>
 
@@ -6,5 +6,10 @@
 
 <%= render 'posts/post' %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Return', users_path %>
+<div class="container text-center mt-4 mb-5">
+    <% if logged_in? and @user == current_user %>
+        <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-success" %>
+    <% end %>
+    <%= link_to 'Return', users_path, class: "btn btn-outline-success" %>
+</div>
+

@@ -10,29 +10,43 @@
           <%= link_to "Home", root_path, class: "nav-link active", id: "logo" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Tutors", users_path, class: "nav-link" %>
+          <%= link_to "About", about_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Posts", posts_path, class: "nav-link" %>
+          <%= link_to "Tutors", users_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Posts
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <% if logged_in? %>
+              <%= link_to "Create New Post", new_post_path, class: "dropdown-item" %>
+            <% end %>
+            <li class="nav-item"><%= link_to "View Posts", posts_path, class: "dropdown-item" %></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <%= link_to "Sign Up", signup_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "About", about_path, class: "nav-link" %>
-        </li>
+        
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Log in", login_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign Up", signup_path, class: "nav-link" %>
+          </li>
+        <% end %>
+        
+        
       </ul>
+      
       
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
