@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /posts
   def index
@@ -54,5 +56,12 @@ class PostsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def post_params
       params.fetch(:post, {}).permit(:title, :tutor_area, :schedule, :description, :price)
+    end
+    
+    def require_same_user
+      if current_user != @post.user
+        flash[:notice] = "You can only edit or delete your posts"
+        redirect_to @post
+      end
     end
 end
