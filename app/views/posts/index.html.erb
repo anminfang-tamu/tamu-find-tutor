@@ -1,35 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1 class="text-center mt-4">Posts</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Tutor Area</th>
-      <th>Schedule</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!--<table class="table table-striped table-dark table-hover">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th scope="col">Title</th>-->
+<!--      <th scope="col">Tutor Area</th>-->
+<!--      <th scope="col">Schedule</th>-->
+<!--      <th scope="col">Description</th>-->
+<!--      <th scope="col">Price</th>-->
+<!--      <th scope="col" colspan="3">Actions</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.tutor_area %></td>
-        <td><%= post.schedule %></td>
-        <td><%= post.description %></td>
-        <td><%= post.price %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!--  <tbody>-->
+<!--    <% @posts.each do |post| %>-->
+<!--      <tr>-->
+<!--        <td><%= post.title %></td>-->
+<!--        <td><%= post.tutor_area %></td>-->
+<!--        <td><%= post.schedule %></td>-->
+<!--        <td><%= post.description %></td>-->
+<!--        <td><%= post.price %></td>-->
+<!--        <td><%= link_to 'Show', post %></td>-->
+<!--        <td><%= link_to 'Edit', edit_post_path(post) %></td>-->
+<!--        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+<!--    <% end %>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<%= render 'post' %>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path, class: "text-center mt-4" %>
