@@ -30,7 +30,11 @@
         
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to "Profile - " + current_user.username, edit_user_path(current_user), class: "nav-link" %>
+            <% if current_user.admin? %>
+              <%= link_to "(Admin) Profile - " + current_user.username, edit_user_path(current_user), class: "nav-link" %>
+            <% else %>
+              <%= link_to "Profile - " + current_user.username, edit_user_path(current_user), class: "nav-link" %>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
