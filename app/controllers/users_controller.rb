@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, only: [:edit, :update]
     skip_before_action :verify_authenticity_token
     
     def show
