@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
     before_action :require_user, only: [:edit, :update]
+    before_action :require_same_user, only: [:edit, :update]
     skip_before_action :verify_authenticity_token
     
     def show
@@ -51,6 +52,13 @@ class UsersController < ApplicationController
     
     def user_params
         params.require(:user).permit(:username, :fullname, :user_email, :password)
+    end
+    
+    def require_same_user
+        if current_user != @user
+            flash[:alert] = "You can only edit your own account"
+            redirect_to @user
+        end
     end
     
 end
