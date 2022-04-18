@@ -55,7 +55,11 @@ class UsersController < ApplicationController
     end
     
     def require_same_user
+<<<<<<< HEAD
         if current_user != @user && !current_user.admin?
+=======
+        if current_user != @user && !!current_user.admin?
+>>>>>>> add-admin-role
             flash[:alert] = "You can only edit your own account"
             redirect_to @user
         end
