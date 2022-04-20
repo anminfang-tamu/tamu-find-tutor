@@ -45,6 +45,16 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
+  def test
+  end
+
+  def search
+    @posts = Post.all
+    @posts = Post.where("description like ?", "%#{params['query']}%")
+    render :text => "Hello World"
+    # byebug
+    #redirect_to @posts, notice: 'Post was successfully created.'
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
