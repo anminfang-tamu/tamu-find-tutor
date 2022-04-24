@@ -48,9 +48,15 @@ class PostsController < ApplicationController
   end
   
   def search
-    p params[:keyword]
-    keyword = params[:keyword]
-    @posts = Post.where(description: keyword).where(title: keyword).where(tutor_area: keyword).where(price: keyword).where(schedule: keyword)
+    keyword = params[:keyword].downcase
+    @posts = Post.all
+    @posts = Post.where("lower(title) like ?", "%#{keyword}%")
+      .or(Post.where("lower(description) like ?", "%#{keyword}%"))
+      .or(Post.where("lower(tutor_area) like ?", "%#{keyword}%"))
+      .or(Post.where("lower(schedule) like ?", "%#{keyword}%"))
+    @users = User.all
+    @users = User.where("lower(username) like ?", "%#{keyword}%")
+    .or(User.where("lower(fullname) like ?", "%#{keyword}%"))
   end
 
   private
