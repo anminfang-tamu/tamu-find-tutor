@@ -48,7 +48,9 @@ class PostsController < ApplicationController
   end
   
   def search
-    
+    p params[:keyword]
+    keyword = params[:keyword]
+    @posts = Post.where(description: keyword).where(title: keyword).where(tutor_area: keyword).where(price: keyword).where(schedule: keyword)
   end
 
   private

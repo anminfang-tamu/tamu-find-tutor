@@ -50,10 +50,17 @@
       </ul>
       
       
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <!--<form class="d-flex">-->
+      <!--  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+      <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
+      <!--</form>-->
+      
+      <%= form_tag 'search', class: "d-flex", method: :get do %>
+        <%= text_field_tag :keyword, params[:post], placeholder: "Key word", autofocus: true, class: "form-control me-2" %>
+        <%= button_tag type: :submit, class: "btn btn-outline-success" do %>
+          <%= 'Search' %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </nav>
