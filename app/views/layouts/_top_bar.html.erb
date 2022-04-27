@@ -15,22 +15,22 @@
         <li class="nav-item">
           <%= link_to "Tutors", users_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Posts
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <% if logged_in? %>
-              <%= link_to "Create New Post", new_post_path, class: "dropdown-item" %>
-            <% end %>
-            <li class="nav-item"><%= link_to "View Posts", posts_path, class: "dropdown-item" %></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <li>
+          <%= link_to "Posts", posts_path, class: "nav-link" %>
         </li>
+        <% if logged_in? %>
+          <li>
+            <%= link_to "Create New Post", new_post_path, class: "nav-link" %>
+          </li>
+        <% end %>
         
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
+            <% if current_user.admin? %>
+              <%= link_to "(Admin) Profile - " + current_user.username, edit_user_path(current_user), class: "nav-link" %>
+            <% else %>
+              <%= link_to "Profile - " + current_user.username, edit_user_path(current_user), class: "nav-link" %>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
@@ -43,15 +43,14 @@
             <%= link_to "Sign Up", signup_path, class: "nav-link" %>
           </li>
         <% end %>
-        
-        
       </ul>
       
-      
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <%= form_tag 'search', class: "d-flex", method: :get do %>
+        <%= text_field_tag :keyword, params[:post], placeholder: "Key word", autofocus: true, class: "form-control me-2" %>
+        <%= button_tag type: :submit, class: "btn btn-outline-success" do %>
+          <%= 'Search' %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </nav>

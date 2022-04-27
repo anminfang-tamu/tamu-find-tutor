@@ -1,0 +1,8 @@
+<div class="container">
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> alert-dismissible">
+      <%= msg %>
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    </div>
+  <% end %> 
+</div>
