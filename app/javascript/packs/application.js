@@ -21,6 +21,8 @@
 import { Tooltip, Popover } from "bootstrap"
 import 'bootstrap';
 import '../stylesheets/application'
+import 'bootstrap/dist/js/bootstrap'
+import "bootstrap/dist/css/bootstrap";
 
 require("@rails/ujs").start()
 require("turbolinks").start()

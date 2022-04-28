@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:show, :index]
+  before_action :require_user, except: [:show, :index, :search]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /posts
@@ -45,6 +45,18 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
+  end
+  
+  def search
+    keyword = params[:keyword].downcase
+    @posts = Post.all
+    @posts = Post.where("lower(title) like ?", "%#{keyword}%")
+      .or(Post.where("lower(description) like ?", "%#{keyword}%"))
+      .or(Post.where("lower(tutor_area) like ?", "%#{keyword}%"))
+      .or(Post.where("lower(schedule) like ?", "%#{keyword}%"))
+    @users = User.all
+    @users = User.where("lower(username) like ?", "%#{keyword}%")
+    .or(User.where("lower(fullname) like ?", "%#{keyword}%"))
   end
 
   private

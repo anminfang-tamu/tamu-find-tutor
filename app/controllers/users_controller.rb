@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, only: [:edit, :update]
+    before_action :require_same_user, only: [:edit, :update]
     skip_before_action :verify_authenticity_token
     
     def show
@@ -39,7 +41,9 @@ class UsersController < ApplicationController
     
     def destroy
         @user.destroy
-        redirect_to users_path
+        session[:user_id] = nil if @user == current_user
+        flash[:notice] = "Account and all associated posts successfully deleted"
+        redirect_to posts_path
     end
     
     private
@@ -50,6 +54,13 @@ class UsersController < ApplicationController
     
     def user_params
         params.require(:user).permit(:username, :fullname, :user_email, :password)
+    end
+    
+    def require_same_user
+        if current_user != @user && !!current_user.admin?
+            flash[:alert] = "You can only edit or delete your own account"
+            redirect_to @user
+        end
     end
     
 end
