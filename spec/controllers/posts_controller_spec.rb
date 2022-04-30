@@ -24,12 +24,27 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe PostsController, type: :controller do
-
+  
+  before(:each) do
+        @user = create(:user)
+    end
+  
   # This should return the minimal set of attributes required to create a valid
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+  let!(:valid_attributes) {
+    # skip("Add a hash of attributes valid for your model")
+    {
+      'title' => 'test-title',
+      'tutor_area' => 'CS',
+      'schedule' => 'Fri',
+      'description' => 'Good',
+      'price' => 3.99,
+      'user_id' => @user.id,
+      'created_at' => '2022-04-30',
+      'updated_at' => '2022-04-30'
+    }
+    
   }
 
   let(:invalid_attributes) {
@@ -39,7 +54,11 @@ RSpec.describe PostsController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PostsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { 
+    {
+      'user' => @user
+    } 
+  }
 
   describe "GET #index" do
     it "returns a success response" do
@@ -60,7 +79,8 @@ RSpec.describe PostsController, type: :controller do
   describe "GET #new" do
     it "returns a success response" do
       get :new, params: {}, session: valid_session
-      expect(response).to be_successful
+      # redirect to posts page
+      expect(response.status).to eq(302) 
     end
   end
 
@@ -68,7 +88,8 @@ RSpec.describe PostsController, type: :controller do
     it "returns a success response" do
       post = Post.create! valid_attributes
       get :edit, params: {id: post.to_param}, session: valid_session
-      expect(response).to be_successful
+      # redirect to posts page
+      expect(response.status).to eq(302)
     end
   end
 
@@ -78,11 +99,13 @@ RSpec.describe PostsController, type: :controller do
         expect {
           post :create, params: {post: valid_attributes}, session: valid_session
         }.to change(Post, :count).by(1)
+        
       end
 
       it "redirects to the created post" do
         post :create, params: {post: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Post.last)
+        # redirect to posts page
+        expect(response).to eq(302)
       end
     end
 
