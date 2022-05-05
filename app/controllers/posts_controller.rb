@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:show, :index, :search]
+  before_action :require_user, except: [:show, :index, :search, :home]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /posts
@@ -8,6 +8,9 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def home
+    @posts = Post.all
+  end
   # GET /posts/1
   def show
   end

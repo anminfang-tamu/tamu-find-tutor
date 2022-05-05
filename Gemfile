@@ -58,3 +58,4 @@ gem 'safe_attributes'
 gem 'webpacker', '~> 5.0' 
 
 gem 'turbolinks'
+gem 'simplecov', require: false, group: :test
